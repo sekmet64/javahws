@@ -11,7 +11,7 @@ import java.util.Random;
 
 @SuppressWarnings("serial")
 public class Pushme extends Frame {
-	private Button pushMeButton;
+	private Button pullMe;
 	private Random random;
 	
 	public Pushme() {
@@ -27,25 +27,26 @@ public class Pushme extends Frame {
 		
 		random = new Random();
 		
-		pushMeButton = new Button("Push me");
-		pushMeButton.setSize(65, 24);
-		pushMeButton.addMouseListener(new MouseAdapter() {
+		pullMe = new Button("Push me");
+		
+		pullMe.setSize(65, 24);
+		pullMe.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent event) {
 				randomizeButtonPosition();
 			}
 		});
-		this.add(pushMeButton);
+		this.add(pullMe);
 		
 		randomizeButtonPosition();
 		this.setVisible(true);
 	}
 	public void randomizeButtonPosition() {
 		Point point = new Point(random.nextInt(735), random.nextInt(476));
-		if (!pushMeButton.contains(point) &&
-			!pushMeButton.contains(point.x + 65, point.y + 24) &&
-			!pushMeButton.contains(point.x + 65, point.y) &&
-			!pushMeButton.contains(point.x, point.y + 24))
-			pushMeButton.setLocation(random.nextInt(735), random.nextInt(476));
+		if (!pullMe.contains(point) &&
+			!pullMe.contains(point.x + 65, point.y + 24) &&
+			!pullMe.contains(point.x + 65, point.y) &&
+			!pullMe.contains(point.x, point.y + 24))
+			pullMe.setLocation(random.nextInt(735), random.nextInt(476));
 		else
 			randomizeButtonPosition();			
 	}
